@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="BingoCard.js"></script>
+    <script src="BallDraw.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="Home" class="Home">
+      <nav class="navbar navbar-expand-lg" style="background-color: black">
+        <a class="navbar-brand">ITEW2</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="uil uil-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active" style="color: white">
+              <a class="nav-link" href="#Home"
+                >MIDTERM PROJECT<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                PROF. JANUS TAN
+              </a>
+              <div
+        </div>
+      </nav>
+    <h1>BINGO</h1>
+      <a href="#Process" class="button">
+        <span class="button_lg">
+          <span class="button_sl"></span>
+          <span class="button_text">PLAY NOW</span>
+        </span>
+      </a>
+    </section>
+
+    <section id="Process" class="Gen">
+      <h1>BINGO CARD GENERATOR</h1>
+      <div class="flex-container">
+        <div class="container container-1">
+          <h2>Enter Number of Cards</h2>
+          <input type="number" id="numCards" />
+          <div class="buttons-wrapper">
+            <button onclick="generateCard()">Generate Cards</button>
+            <button onclick="clearGame()">Clear</button>
+          </div>
+        </div>
+        <div class="container container-2">
+          <button onclick="drawBall()">Draw Ball</button><br />
+          <div id="ballDrawns"></div>
+        </div>
+      </div>
+      <div id="bingoCards"></div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script src="BingoCard.js"></script>
+    <script>
+      // Get the bingo cards container element
+      let bingoCardsDiv = document.getElementById("bingoCards");
+      let ballDrawnsDiv = document.getElementById("ballDrawns");
+      let numCardsInput = document.getElementById("numCards");
+
+      // Create an empty array to hold the generated bingo cards
+      let bingoCards = [];
+      let winners = [];
+      let ballDraw;
+
+      function generateCard() {
+        // Get the number of cards to generate from the input field
+        let numOfCards = numCardsInput.value;
+        numCardsInput.value = "";
+
+        if (isInputInvalid(numOfCards)) {
+          return;
+        }
+
+        // Clear the contents of the container
+        bingoCardsDiv.innerHTML = "";
+        // Generate the requested number of cards
+        for (let i = 0; i < numOfCards; i++) {
+          // Create a new BingoCard instance
+          let card = new BingoCard();
+          // Generate a random matrix for the card
+          card.generateMatrix();
+          // Add the card to the array of bingo cards
+          bingoCards.push(card.matrix);
+          // Append the card HTML to the container
+          bingoCardsDiv.innerHTML += card.drawCard();
+        }
+        // Create a new BallDraw instance for the game
+        ballDraw = new BallDraw();
+      }
+
+      function isInputInvalid(input) {
+        if (bingoCards.length > 0) {
+          alert("You already generated a card! Please clear it first.");
+          return true;
+        }
+        if (input < 1) {
+          alert("The number should be greater than 0.");
+          return true;
+        }
+        if (input > 100) {
+          alert("The number of cards must not be greater than 100.");
+          return true;
+        }
+
+        return false;
+      }
+
+      function drawBall() {
+        if (winners.length > 0) {
+          alert("There is already a winner! Please clear it first.");
+          return;
+        }
+        // Check if any bingo cards have been generated
+        if (bingoCards.length === 0) {
+          alert("Please generate bingo cards first!");
+          return;
+        }
+        // Draw a new ball
+        ballDraw.drawBall();
+        // Update the list of drawn balls on the page
+        ballDrawnsDiv.innerHTML = `Numbers drawn: ${ballDraw.ballDrawns}, `;
+        // Check for a winner
+        markNumber();
+        displayWinner();
+      }
+
+      function markNumber() {
+        let index = ballDraw.ballDrawns.length - 1;
+        let currCall = ballDraw.ballDrawns[index].substring(1);
+
+        for (let i = 0; i < bingoCards.length; i++) {
+          for (let j = 0; j < 5; j++) {
+            for (let k = 0; k < 5; k++) {
+              if (bingoCards[i][j][k] === Number(currCall)) {
+                bingoCards[i][j][k] = "FREE";
+              }
+            }
+          }
+        }
+      }
+
+      // This function identifies and highlights the winning cards in the game
+      function displayWinner() {
+        // Get all the bingo cards
+        let cards = document.querySelectorAll("table");
+        // Iterate through each card and check if it has a full line in any direction
+        for (let i = 0; i < bingoCards.length; i++) {
+          if (
+            hasFullLine(bingoCards[i], "row") ||
+            hasFullLine(bingoCards[i], "column")
+          ) {
+            // Add the winning card to the winners array
+            winners.push(cards[i]);
+          }
+        }
+        // If there are any winners, display an alert and highlight the winning cells
+        if (winners.length != 0) {
+          alert("BINGO!");
+          for (let i = 0; i < winners.length; i++) {
+            winners[i].classList.add("winner");
+          }
+        }
+      }
+
+      function hasFullLine(card, direction) {
+        // Check each row or column for a full line
+        for (let i = 0; i < 5; i++) {
+          let count = 0;
+          for (let j = 0; j < 5; j++) {
+            // Get the cell based on the direction (row or column)
+            let cell = direction === "row" ? card[i][j] : card[j][i];
+            // Count the highlighted cells
+            if (cell === "FREE") {
+              count++;
+            }
+          }
+          // Check if a full line has been formed in the row or column
+          if (count === 5) {
+            return true;
+          }
+        }
+        // No full line found
+        return false;
+      }
+
+      function clearGame() {
+        // Reset the bingoCards and ballDraw arrays
+        bingoCards = [];
+        winners = [];
+
+        // Clear the bingoCards and ballDrawns divs
+        bingoCardsDiv.innerHTML = "";
+        ballDrawnsDiv.innerHTML = "";
+        // Reset the number of cards input
+        numCardsInput.value = "";
+      }
+    </script>
+  </body>
+</html>

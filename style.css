@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+/* CSS RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.Gen {
+  background-image: url(IMG/SECTION2.png);
+  margin: auto 0;
+  background-attachment: fixed;
+}
+.Home {
+    background-color: #ff4655;
+
+}
+section {
+  min-height: 110vh;
+  font-family: "Times New Roman", Times, serif;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*-- vdjsf--*/
+#Home .navbar-brand {
+  font-size: 1.5em;
+  font-family: "Bebas Neue";
+  color: white;
+}
+#Home .nav-link {
+  color: rgb(255, 255, 255);
+  margin-right: 70px;
+}
+#Home button {
+  font-size: 10pt;
+  color: rgb(255, 255, 255);
+  border-color: white;
+  border-radius: 1px white;
+}
+#Home a {
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  font-family: "Bebas Neue";
+}
+#Home .dropdown-menu a {
+  color: rgb(0, 0, 0);
+  padding: 5px -20px 5px 15px;
+}
+#Home a:hover {
+  color: rgb(51, 49, 49);
+}
+#Home .dropdown-menu a:hover {
+  color: rgb(76, 76, 185);
+}
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0p;
+}
+.navbar li {
+  padding-left: 20px;
+}
+/*-- HOME SECTION STYLE -- */
+.Home h2 {
+  color: white;
+  font-size: 13px;
+  font-size: 6em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Bebas Neue", italic;
+}
+.Home h1 {
+  color: White;
+  font-size: 7rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 130px;
+  font-family: "Bebas Neue", italic;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  padding: 4em 6em; /* add horizontal padding */
+  box-sizing: border-box;
+}
+.container {
+  padding: 4em 6em;
+  border: 0.5px solid black;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.container-1 {
+  background-color: #ffffff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -100px;
+}
+
+.container-1 h2 {
+  margin-bottom: 5px;
+  margin-left: 50px;
+  font-family: "Bebas Neue", Bold;
+  font-size: 30px;
+}
+
+.container-1 input[type="number"] {
+  padding: 8px;
+  width: 95%;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.container-1 .buttons-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.container-1 button {
+  padding: 10px 45px;
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.container-1 button:hover {
+  background-color: #ff4655;
+}
+.container-2 {
+  background-color: #ff4655;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 175px;
+  top: -50px;
+  max-width: 100%;
+}
+
+.container-2 button {
+  padding: 10px 45px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: -20px;
+  margin-top: -45px;
+}
+.container-2 button:hover {
+  background-color: #000000;
+  color: white;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  width: 35%;
+}
+a:hover {
+  text-decoration: none;
+}
+#bingoCards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 980px;
+  gap: 1.5em;
+  margin: auto;
+  margin-top: -70px;
+  border-radius: 600px;
+}
+table {
+  border-collapse: collapse;
+  background-image: url(https://tse1.mm.bing.net/th?id=OIP.6gPj9hZgDQfzN0_Nt7Ty7gHaE7&pid=Api&P=0);
+  background-size: cover;
+}
+td.highlight {
+  background-color: #4a7f5f;
+}
+
+th,
+td {
+  border: 1.5px solid #ff4655;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Poppins";
+}
+
+th {
+  background-color: #ff4655;
+}
+.free-cell {
+  font-size: 10px;
+  font-family: "Poppins";
+  background-color: #ff4655 !important;
+}
+/*--- VALO BUTTON --*/
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  color: #000000;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  padding: 15px;
+  text-transform: uppercase;
+  font-weight: 100;
+  transition: all 0.15s ease;
+  margin: auto 0;
+}
+.button::before,
+.button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid hsl(0, 0%, 100%);
+  transition: all 0.15s ease;
+}
+.button::before {
+  top: 0;
+  border-bottom-width: 0;
+}
+.button::after {
+  bottom: 0;
+  border-top-width: 0;
+}
+.button:active,
+.button:focus {
+  outline: none;
+}
+.button:active::before,
+.button:active::after {
+  right: 3px;
+  left: 3px;
+}
+.button:active::before {
+  top: 3px;
+}
+.button:active::after {
+  bottom: 3px;
+}
+.button_lg {
+  position: relative;
+  display: block;
+  padding: 8px 50px;
+  color: #fff;
+  background-color: #000000;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+.button_lg::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+.button_lg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #000000;
+  transition: all 0.2s ease;
+}
+.button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #ff4655;
+  transform: skew(-15deg);
+  transition: all 0.2s ease;
+}
+.button_text {
+  position: relative;
+}
+.button:hover {
+  color: #000000;
+}
+.button:hover .button_sl {
+  width: calc(100% + 15px);
+}
+.button:hover .button_lg::after {
+  background-color: #fff;
+}
+/*-- SECTION Proiess STYLE---*/
+#Process {
+  padding-top: 50px;
+}
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 40px;
+}
+#Process h1 {
+  color: #ff4655;
+  font-size: 3em;
+  text-align: left;
+  font-family: "Bebas Neue", Bold;
+  margin-top: -40px;
+  text-align: center;
+}
+table.winner {
+  border: 15px solid #ffd700;
+}
+#ballDrawns {
+  font-size: 15px; /* set the font size to 15 pixels */
+  font-family: "Bebas Neue", Bold;
+  text-align: center; /* center the text horizontally */
+  top: 10%; /* move the element down by 50% of its own height */
+  transform: translateY(
+    -10%
+  ); /* move the element up by 50% of its own height */
+}
+
